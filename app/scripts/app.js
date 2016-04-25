@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('clienteIntercambealoApp', [
     'ngAnimate',
     'ngCookies',
@@ -30,7 +30,31 @@ angular
         controller: 'LoginCtrl',
         controllerAs: 'registros'
       })
+      .when('/dashboard', {
+        templateUrl: 'views/dashboard.html',
+        controller: 'AllProductsCtrl',
+        controllerAs: 'allProducts'
+      })
       .otherwise({
         redirectTo: '/'
       });
   });
+
+  app.config(function($httpProvider)
+{
+    $httpProvider.interceptors.push('RequestHeadersInterceptor');
+});
+
+app.factory("RequestHeadersInterceptor", function()
+{
+    var request = function request(config)
+    {
+        config.headers["Authorization"] ="Token token="+ sessionStorage.getItem("ngStorage-token");
+        console.log(config);
+        return config;
+    };
+
+    return {
+        request: request
+    };
+});
