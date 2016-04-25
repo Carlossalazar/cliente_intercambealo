@@ -35,6 +35,11 @@ var app = angular
         controller: 'AllProductsCtrl',
         controllerAs: 'allProducts'
       })
+      .when('/intercambio', {
+        templateUrl: 'views/intercambio.html',
+        controller: 'AllProductsCtrl',
+        controllerAs: 'intercambio'
+      })
       .otherwise({
         redirectTo: '/'
       });

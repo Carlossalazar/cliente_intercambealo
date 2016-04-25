@@ -1,58 +1,74 @@
-<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" ng-repeat="(key, value) in products">
 
-    <!-- PRICE ITEM -->
-    <div class="panel price panel-red">
-        <div class="panel-heading  text-center">
-            <h3>Name of product:</h3>
+<div id="todos">
+    <div  class="col-xs-6 col-sm-6 col-md-3 col-lg-3" ng-repeat="(key, value) in products">
+
+        <!-- PRICE ITEM -->
+        <div class="panel price panel-red">
+            <div class="panel-heading  text-center">
+                <h3>Nombre del producto:</h3>
+            </div>
+            <div class="panel-body text-center">
+                <p class="lead" style="font-size:40px"><strong>{{value.name}}</strong></p>
+            </div>
+            <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item"><i class=" text-danger"></i> Descripcion:</li>
+                <li class="list-group-item"><i class="icon-ok text-danger"></i> {{value.description}}</li>
+            </ul>
+            <div class="panel-footer">
+                <a class="btn btn-lg btn-block btn-danger"  ng-click="producto(value.id)">Cambiar</a>
+            </div>
         </div>
-        <div class="panel-body text-center">
-            <p class="lead" style="font-size:40px"><strong>{{value.name}}</strong></p>
-        </div>
-        <ul class="list-group list-group-flush text-center">
-            <li class="list-group-item"><i class=" text-danger"></i> Description of product:</li>
-            <li class="list-group-item"><i class="icon-ok text-danger"></i> {{value.description}}</li>
-        </ul>
-        <div class="panel-footer">
-            <a class="btn btn-lg btn-block btn-danger">Cambiar</a>
-        </div>
+        <!-- /PRICE ITEM -->
+
+
     </div>
-    <!-- /PRICE ITEM -->
-
 
 </div>
-
-
-
 <!--  -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="myLargeModalLabel" aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="col-lg-12">
-                <div class="text-center">
-                    <img src="https://cdn4.iconfinder.com/data/icons/ballicons-2-free/100/box-128.png"
-                    alt="Texto Alternativo" class="img-circle img-thumbnail">
-                    <h1 class="alert alert-success" role="alert">Name of product: {{producto.name}}</h1>
-                    <p class="alert alert-info" role="alert">Description of product: {{producto.description}} </p>
-                    <br>
-                    <br>
-                </div>
-                <h1 style=" font-size: x-large; color: rebeccapurple;
-                ">Seleccione el producto a intercambiar</h1>
+<!--  -->
+<div id="seleccionado">
+    <h1>Producto Seleccionado</h1>
+    <div  class="col-md-6">
 
-                <div class="col-lg-6" ng-repeat="(key, value) in productos">
-                    <div class="text-center">
-                        <img src="https://cdn4.iconfinder.com/data/icons/ballicons-2-free/100/box-128.png"
-                        alt="Texto Alternativo" class="img-circle img-thumbnail">
-                        <h1 class="alert alert-success" role="alert">Name of product: {{value.name}}</h1>
-                        <p class="alert alert-info" role="alert">Description of product: {{value.description}} </p>
-                        <br>
-                        <a  class="btn btn-primary text-center" title="See more"
-                        ng-click="crearintercambio(value.id, producto.id)">Este? »</a>
-                    </div>
-                    <br>
-                </div>
+        <!-- PRICE ITEM -->
+        <div class="panel price panel-red">
+            <div class="panel-heading  text-center">
+                <h3>Nombre del producto:</h3>
             </div>
-            ...
+            <div class="panel-body text-center">
+                <p class="lead" style="font-size:40px"><strong>{{producto.name}}</strong></p>
+            </div>
+            <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item"><i class=" text-danger"></i> Descripcion del producto:</li>
+                <li class="list-group-item"><i class="icon-ok text-danger"></i> {{producto.description}}</li>
+            </ul>
+
         </div>
     </div>
+
+
+
+    <div class="col-md-12">
+        <h1>Selecciona tu producto</h1>
+        <div  class="col-md-3" ng-repeat="(key, value) in productos">
+
+            <!-- PRICE ITEM -->
+            <div class="panel price panel-red">
+                <div class="panel-heading  text-center">
+                    <h3>Nombre del producto:</h3>
+                </div>
+                <div class="panel-body text-center">
+                    <p class="lead" style="font-size:40px"><strong>{{value.name}}</strong></p>
+                </div>
+                <ul class="list-group list-group-flush text-center">
+                    <li class="list-group-item"><i class=" text-danger"></i>Descripcion del producto:</li>
+                    <li class="list-group-item"><i class="icon-ok text-danger"></i> {{value.description}}</li>
+                </ul>
+                <div class="panel-footer">
+                    <a class="btn btn-lg btn-block btn-danger"  ng-click="producto(value.id)">Seleccionar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
