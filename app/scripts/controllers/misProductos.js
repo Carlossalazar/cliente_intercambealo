@@ -14,6 +14,9 @@ angular.module('clienteIntercambealoApp')
             $('#mostar').hide();
             $('#actualizar').hide();
         }, function (error) {
+            $('#nuevo').hide();
+            $('#mostar').hide();
+            $('#actualizar').hide();
             console.log(error);
         });
 
@@ -74,6 +77,8 @@ angular.module('clienteIntercambealoApp')
                 $('#mostar').hide();
                 $('#actualizar').hide();
                 $('#misproductos').show();
+                $('#ocultar').show();
+
             }, function (error) {
                 console.log(error);
             });

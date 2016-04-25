@@ -1,0 +1,68 @@
+<div id="todos">
+    <div  class="col-xs-6 col-sm-6 col-md-3 col-lg-3" ng-repeat="(key, value) in pendientes">
+
+        <!-- PRICE ITEM -->
+        <a  class="btn btn-primary text-center" title="See more"
+        ng-click="pasardatos(value.product_req_id,value.product_offered_id, value.id)"
+        data-toggle="modal"  data-target="#myLargeModalLabel">Ver Transaccion »</a>
+        <!-- /PRICE ITEM -->
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!--  -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="myLargeModalLabel" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="col-lg-12">
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <h1 style="margin-top: 20px;font-size: xx-large;">Tu producto</h1>
+                        <img src="https://cdn4.iconfinder.com/data/icons/ballicons-2-free/100/box-128.png"
+                        alt="Texto Alternativo" class="img-circle img-thumbnail">
+                        <h1 class="alert alert-success" role="alert">Name of product: {{mio.name}}</h1>
+                        <p class="alert alert-info" role="alert">Description of product: {{mio.description}} </p>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <h1 style="margin-top: 20px;font-size: xx-large;">Producto Ofertado</h1>
+                        <img src="https://cdn4.iconfinder.com/data/icons/ballicons-2-free/100/box-128.png"
+                        alt="Texto Alternativo" class="img-circle img-thumbnail">
+                        <h1 class="alert alert-success" role="alert">Name of product: {{ofertado.name}}</h1>
+                        <p class="alert alert-info" role="alert">Description of product: {{ofertado.description}} </p>
+                        <br>
+
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="col-lg-12">
+                <div class="col-lg-6">
+                    <a  class="btn btn-danger text-center" title="See more"
+                    ng-click="rechazarintercambio(value.id)">Rechazar Intercambio</a>
+                </div>
+                <div class="col-lg-6">
+                    <a  class="btn btn-success text-center" title="See more"
+                    ng-click="aceptarintercambio(value.id)">Aceptar Intercambio</a>
+                </div>
+            </div>
+            ...
+        </div>
+    </div>
+</div>

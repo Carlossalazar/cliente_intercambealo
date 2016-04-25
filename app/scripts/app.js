@@ -40,10 +40,10 @@ var app = angular
         controller: 'MisProductosCtrl',
         controllerAs: 'misProducts'
       })
-      .when('/intercambio', {
-        templateUrl: 'views/intercambio.html',
-        controller: 'AllProductsCtrl',
-        controllerAs: 'intercambio'
+      .when('/notificaciones', {
+        templateUrl: 'views/notificaciones.html',
+        controller: 'NotificacionesCtrl',
+        controllerAs: 'notifica'
       })
       .otherwise({
         redirectTo: '/'

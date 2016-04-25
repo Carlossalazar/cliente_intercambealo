@@ -9,10 +9,20 @@ angular.module('clienteIntercambealoApp')
             'Karma'
         ];
 
-        $scope.products = Product.query(function() {
+        $scope.products = Product.query(function(data) {
+
+            $('#todos').show();
             $('#seleccionado').hide();
+
+
         }, function (error) {
             console.log(error);
+            if (error.status == 401) {
+                $('#todos').hide();
+                
+            }
+            debugger;
+            $('#seleccionado').hide();
         });
 
         $scope.productos = MisProductos.query(function() {
