@@ -2,7 +2,7 @@
 
 angular.module('clienteIntercambealoApp')
 .controller('MisProductosCtrl', function ($scope, $http, $resource, $route,
-    Product, MisProductos, Test, $location, $localStorage, $rootScope) {
+    Product, MisProductos, $location, $localStorage, $rootScope) {
         this.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
@@ -10,79 +10,101 @@ angular.module('clienteIntercambealoApp')
         ];
 
         $scope.productos = MisProductos.query(function() {
-
+            $('#nuevo').hide();
+            $('#mostar').hide();
+            $('#actualizar').hide();
         }, function (error) {
             console.log(error);
         });
 
+        $scope.ocultar = function() {
+            $('#misproductos').hide();
+            $('#nuevo').show();
+            $('#ocultar').hide();
+            $('#mostar').show();
+        };
+
+        $scope.mostar = function() {
+            $('#misproductos').show();
+            $('#nuevo').hide();
+            $('#ocultar').show();
+            $('#mostar').hide();
+            $('#actualizar').hide();
+
+        };
+
         $scope.new = function() {
+
             if(!( $.trim($("#name").val()) == "" || $.trim($("#description").val()) == "")){
-                Product.save({name:producto.name, description:producto.description,
-                    state: true},function(data) {
-                        $("#exampleModal").modal('hide');
-                        swal("Producto Creado con Exito!", "Nombre del producto: " + data.name, "success");
-                        $("#name").val("");
-                        $("#description").val("");
-                        $("#state").prop("checked", false);
-                        $scope.productos = MisProductos.query(function() {
+                Product.save({name:$("#name").val(), description:$("#description").val(),
+                state: true},function(data) {
+                    $("#name").val("");
+                    $("#description").val("");
+                    $scope.productos = MisProductos.query(function() {
+                        $('#misproductos').show();
+                        $('#nuevo').hide();
 
-                        }, function (error) {
-                            console.log(error);
-                        });
-
-                    },function(error) {
-                        console.log('There was an error loading', error.statusText);
-                        swal("Error creando productos!", error.e, "error");
-
+                    }, function (error) {
+                        console.log(error);
                     });
 
-                }else {
-                    swal("Error, Falta algún dato!", "", "error");
-                    console.log("datossssssssssssss");
-                }
-            };
+                },function(error) {
+                    console.log('There was an error loading', error.statusText);
 
-            $scope.actualizarproducto = function(id){
-                var data ={
-                    name:"",
-                    description:"",
-                    state:""
-                };
-                data.name = $("#names").val();
-                data.description = $("#descriptions").val();
-                data.state = $("#states").prop("checked");
-                $http.put('http://localhost:3000/v1/products/'+id,
-                {name: data.name, description: data.description, state: data.state });
-                $("#updateModal").modal('hide');
+                });
+
+            }else {
+                console.log("faltan datos");
+            }
+        };
+
+        $scope.actualizarproducto = function(id){
+            var data ={
+                name:"",
+                description:"",
+                state:""
+            };
+            data.name = $("#nam").val();
+            data.description = $("#descriptio").val();
+            debugger;
+            $http.put('http://localhost:3000/v1/products/'+id,
+            {name: data.name, description: data.description });
+            $scope.productos = MisProductos.query(function() {
+                $('#nuevo').hide();
+                $('#mostar').hide();
+                $('#actualizar').hide();
+                $('#misproductos').show();
+            }, function (error) {
+                console.log(error);
+            });
+        };
+
+        $scope.deleteproducto = function(id) {
+            Product.delete({'id': id}, function(data) {
                 $scope.productos = MisProductos.query(function() {
 
                 }, function (error) {
                     console.log(error);
                 });
-            };
+                $("#updateModal").modal('hide');
+                swal("Producto Eliminado =)!", "Buen trabajo!", "success");
 
-            $scope.deleteproducto = function(id) {
-                Product.delete({'id': id}, function(data) {
-                    $scope.productos = MisProductos.query(function() {
+            }, function(error) {
+                console.log('There was an error loading', error.statusText);
+                swal("Error Borrando el producto!", error.e, "error");
+            });
+        };
 
-                    }, function (error) {
-                        console.log(error);
-                    });
-                    $("#updateModal").modal('hide');
-                    swal("Producto Eliminado =)!", "Buen trabajo!", "success");
+        $scope.pasardatos = function(datos){
+            $scope.value = datos;
+            $('#actualizar').show();
+            $('#misproductos').hide();
+            $('#ocultar').hide();
+            $('#mostar').show();
 
-                }, function(error) {
-                    console.log('There was an error loading', error.statusText);
-                    swal("Error Borrando el producto!", error.e, "error");
-                });
-            };
 
-            $scope.pasardatos = function(datos){
-                $scope.value = datos;
-                if (datos.state == true) {
-                    $("#states").prop("checked", true);
-                }else {
-                    $("#states").prop("checked", false);
-                }
-            };
-        });
+
+
+
+        };
+    });

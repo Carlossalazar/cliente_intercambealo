@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clienteIntercambealoApp')
-.controller('AllProductsCtrl', function ($scope, $http, $route, Product, MisProductos,
+.controller('AllProductsCtrl', function ($scope, $http, $route, Product, MisProductos, Intercambio,
     $localStorage, $rootScope) {
         this.awesomeThings = [
             'HTML5 Boilerplate',
@@ -39,11 +39,12 @@ angular.module('clienteIntercambealoApp')
                 product_req_id: requerido,
                 product_offered_id: ofertado
             };
+            debugger;
             Intercambio.save({product_req_id: data.product_req_id,
                 product_offered_id: data.product_offered_id},function(commit) {
-                    swal("Transacción Realizada con éxito!", "Enviamos la peticion al dueño del producto", "success");
                     $scope.productos = MisProductos.query(function() {
-
+                        $('#todos').show();
+                        $('#seleccionado').hide();
                     }, function (error) {
                         console.log(error);
                     });

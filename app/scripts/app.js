@@ -35,6 +35,11 @@ var app = angular
         controller: 'AllProductsCtrl',
         controllerAs: 'allProducts'
       })
+      .when('/registrarproductos', {
+        templateUrl: 'views/registrarproductos.html',
+        controller: 'MisProductosCtrl',
+        controllerAs: 'misProducts'
+      })
       .when('/intercambio', {
         templateUrl: 'views/intercambio.html',
         controller: 'AllProductsCtrl',

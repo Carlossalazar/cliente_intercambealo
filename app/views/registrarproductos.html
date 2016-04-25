@@ -1,0 +1,102 @@
+
+<div class="text-center col-md-12">
+    <button id="ocultar" type="button" ng-click="ocultar()" class="btn btn-danger">Registrar Un producto</button>
+    <button id="mostar" type="button" ng-click="mostar()" class="btn btn-danger">Regresar</button>
+</div>
+
+
+
+<div id="misproductos">
+    <div class="col-md-12">
+        <h1>Lista de Productos</h1>
+        <div  class="col-md-3" ng-repeat="(key, value) in productos">
+
+            <!-- PRICE ITEM -->
+            <div class="panel price panel-red">
+                <div class="panel-heading  text-center">
+                    <h3>Nombre del producto:</h3>
+                </div>
+                <div class="panel-body text-center">
+                    <p class="lead" style="font-size:40px"><strong>{{value.name}}</strong></p>
+                </div>
+                <ul class="list-group list-group-flush text-center">
+                    <li class="list-group-item"><i class=" text-danger"></i>Descripcion del producto:</li>
+                    <li class="list-group-item"><i class="icon-ok text-danger"></i> {{value.description}}</li>
+                </ul>
+                <div class="text-center panel-footer">
+                    <a class="btn btn-lg btn-block btn-danger"  ng-click="pasardatos(value)">Detalles del producto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center  col-md-12" id="nuevo">
+    <form ng-submit="new()">
+
+        <div class="text-center  col-md-12">
+            <h1>Añadir Un producto nuevo</h1>
+            <div  class="col-md-3">
+
+                <!-- PRICE ITEM -->
+                <div class="panel price panel-red">
+                    <div class="panel-heading  text-center">
+                        <h3>Nombre del producto:</h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <input style="color: black;" type="text" id="name" value="" ng-model="producto.name">
+                    </div>
+                    <ul class="list-group list-group-flush text-center">
+                        <li class="list-group-item"><i class=" text-danger"></i>Descripcion del producto:</li>
+                        <div class="panel-body text-center">
+                            <input style="color: black;" type="text" id="description" value="" ng-model="producto.description">
+                        </div>
+                    </ul>
+                    <div class="text-center panel-footer">
+                        <button class="btn btn-danger"><span>Guardar Producto</span></button>
+                        <!-- <a class="btn btn-lg btn-block btn-danger"  ng-click="pasardatos(value)">Guardar</a> -->
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--  -->
+<!--  -->
+<!--  -->
+
+<div class="text-center  col-md-12" id="actualizar">
+    <form ng-submit="actualizarproducto(value.id)">
+
+        <div class="text-center  col-md-12">
+            <h1>Añadir Un producto nuevo</h1>
+            <div  class="col-md-3">
+
+                <!-- PRICE ITEM -->
+                <div class="panel price panel-red">
+                    <div class="panel-heading  text-center">
+                        <h3>Nombre del producto:</h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <input style="color: black;" type="text" id="nam" value="{{value.name}}" >
+                    </div>
+                    <ul class="list-group list-group-flush text-center">
+                        <li class="list-group-item"><i class=" text-danger"></i>Descripcion del producto:</li>
+                        <div class="panel-body text-center">
+                            <input style="color: black;" type="text" id="descriptio" value="{{value.description}}" >
+                        </div>
+                    </ul>
+                    <div class="text-center panel-footer">
+                        <button class="btn btn-danger" ng-click="actualizarproducto(value.id)"><span>Actualizar Producto</span></button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--  -->
+<!--  -->
+<!--  -->
