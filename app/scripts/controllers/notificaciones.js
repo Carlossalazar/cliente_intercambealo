@@ -9,14 +9,40 @@ angular.module('clienteIntercambealoApp')
     ];
 
     $scope.pendientes  = Intercambio.query(function(data) {
-        aceptarintercambio();
+        $('#pasardatos').hide();
+        $('#atras').hide();
+
+    },function(error) {
+        $('#pasardatos').hide();
+        $('#atras').hide();
+
     });
+    $scope.atras = function() {
+
+
+        $('#todos').show();
+
+        $scope.pendientes  = Intercambio.query(function(data) {
+            $('#pasardatos').hide();
+            $('#atras').hide();
+
+        },function(error) {
+            $('#pasardatos').hide();
+            $('#atras').hide();
+
+        });
+
+
+    };
 
     $scope.pasardatos = function(mios, ofertados, id) {
         $scope.mio = Product.get({id:mios});
         $scope.ofertado = Product.get({id:ofertados});
         $localStorage.interambio = id;
         $('#pasardatos').show();
+        $('#todos').hide();
+        $('#atras').show();
+
 
     };
     $scope.aceptarintercambio = function name() {
