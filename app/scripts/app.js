@@ -78,8 +78,6 @@ function($rootScope, $location,$routeProvider,$localStorage) {
 
         };
 
-
-
     });
 }
 ]);
