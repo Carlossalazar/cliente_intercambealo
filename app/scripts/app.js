@@ -1,15 +1,15 @@
 'use strict';
 
 /**
- * @ngdoc overview
- * @name clienteIntercambealoApp
- * @description
- * # clienteIntercambealoApp
- *
- * Main module of the application.
- */
+* @ngdoc overview
+* @name clienteIntercambealoApp
+* @description
+* # clienteIntercambealoApp
+*
+* Main module of the application.
+*/
 var app = angular
-  .module('clienteIntercambealoApp', [
+.module('clienteIntercambealoApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -17,40 +17,40 @@ var app = angular
     'ngSanitize',
     'ngTouch',
     'ngStorage'
-  ])
-  .config(function ($routeProvider) {
+])
+.config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+    .when('/', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
         controllerAs: 'logins'
-      })
-      .when('/register', {
+    })
+    .when('/register', {
         templateUrl: 'views/register.html',
         controller: 'LoginCtrl',
         controllerAs: 'registros'
-      })
-      .when('/dashboard', {
+    })
+    .when('/dashboard', {
         templateUrl: 'views/dashboard.html',
         controller: 'AllProductsCtrl',
         controllerAs: 'allProducts'
-      })
-      .when('/registrarproductos', {
+    })
+    .when('/registrarproductos', {
         templateUrl: 'views/registrarproductos.html',
         controller: 'MisProductosCtrl',
         controllerAs: 'misProducts'
-      })
-      .when('/notificaciones', {
+    })
+    .when('/notificaciones', {
         templateUrl: 'views/notificaciones.html',
         controller: 'NotificacionesCtrl',
         controllerAs: 'notifica'
-      })
-      .otherwise({
+    })
+    .otherwise({
         redirectTo: '/'
-      });
-  });
+    });
+});
 
-  app.config(function($httpProvider)
+app.config(function($httpProvider)
 {
     $httpProvider.interceptors.push('RequestHeadersInterceptor');
 });
@@ -68,3 +68,18 @@ app.factory("RequestHeadersInterceptor", function()
         request: request
     };
 });
+
+app.run(['$rootScope', '$location',
+function($rootScope, $location,$routeProvider,$localStorage) {
+    $rootScope.$on('$routeChangeStart', function(event, next) {
+        $rootScope.cerrarsession = function(){
+            sessionStorage.clear();
+            $location.path("/");
+
+        };
+
+
+
+    });
+}
+]);

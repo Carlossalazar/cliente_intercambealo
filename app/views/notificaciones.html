@@ -6,6 +6,7 @@
         </button>
         <ul class="dropdown-menu">
           <li ng-repeat="(key, value) in pendientes">
+              {{mss}}
         <a ng-click="pasardatos(value.product_req_id,value.product_offered_id, value.id)">ver Intercambioo {{key+1}}</a></li>
 
         </ul>
@@ -13,4 +14,52 @@
 </div>
 <div id="atras">
     <button ng-click="atras()" type="button" class="btn btn-success" name="button"><span>Atras</span></button>
+</div>
+
+
+
+<div id="pasardatos">
+    <div class="col-lg-6">
+        <div class="panel price panel-red">
+            <div class="panel-heading  text-center">
+                <h3>Tu producto</h3>
+            </div>
+            <div class="panel-body text-center">
+                <p class="lead" style="font-size:40px"><strong>{{mio.name}}</strong></p>
+            </div>
+            <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item"><i class=" text-danger"></i> Descripcion:</li>
+                <li class="list-group-item"><i class="icon-ok text-danger"></i> {{mio.description}}</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+
+
+        <div class="panel price panel-red">
+            <div class="panel-heading  text-center">
+                <h3>Producto ofrecido</h3>
+            </div>
+            <div class="panel-body text-center">
+                <p class="lead" style="font-size:40px"><strong> {{ofertado.name}}</strong></p>
+            </div>
+            <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item"><i class=" text-danger"></i> Descripcion:</li>
+                <li class="list-group-item"><i class="icon-ok text-danger"></i> {{ofertado.description}}</li>
+            </ul>
+
+        </div>
+
+    </div>
+    <div class="col-lg-6">
+        <a  class="btn btn-danger text-center" title="See more"
+        ng-click="rechazarintercambio(value.id)">Rechazar Intercambio</a>
+    </div>
+    <div class="col-lg-6">
+        <a  class="btn btn-success text-center" title="See more"
+        ng-click="aceptarintercambio(value.id)">Aceptar Intercambio</a>
+    </div>
+</div>
 </div>

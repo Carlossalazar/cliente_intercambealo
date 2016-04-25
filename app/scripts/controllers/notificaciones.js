@@ -11,6 +11,10 @@ angular.module('clienteIntercambealoApp')
     $scope.pendientes  = Intercambio.query(function(data) {
         $('#pasardatos').hide();
         $('#atras').hide();
+        debugger;
+        if (data.id == null) {
+            $scope.mss = "NO hay Notificaciones"
+        }
 
     },function(error) {
         $('#pasardatos').hide();
@@ -49,13 +53,35 @@ angular.module('clienteIntercambealoApp')
         var id = localStorage.getItem("ngStorage-interambio");
         $http.put('http://localhost:3000/v1/transactions/'+id, {accept_chance: true });
 
-        $scope.pendientes  = Intercambio.query();
+        $('#todos').show();
+
+        $scope.pendientes  = Intercambio.query(function(data) {
+            $('#pasardatos').hide();
+            $('#atras').hide();
+
+        },function(error) {
+            $('#pasardatos').hide();
+            $('#atras').hide();
+
+        });
+
 
     };
     $scope.rechazarintercambio = function() {
         var id = localStorage.getItem("ngStorage-interambio");
         Intercambio.delete({'id': id}, function(data) {
-            $scope.pendientes  = Intercambio.query();
+            $('#todos').show();
+
+            $scope.pendientes  = Intercambio.query(function(data) {
+                $('#pasardatos').hide();
+                $('#atras').hide();
+
+            },function(error) {
+                $('#pasardatos').hide();
+                $('#atras').hide();
+
+            });
+
 
 
         }, function(error) {
