@@ -1,22 +1,21 @@
-<div class="container">
-  <div class="card"></div>
-  <div class="card">
-    <h1 class="title">Login</h1>
-    <form ng-submit="login()">
-      <div class="input-container">
-        <input type="text" id="Username" required="required" ng-model="user.username"/>
-        <label for="Username">Username</label>
-        <div class="bar"></div>
-      </div>
-      <div class="input-container">
-        <input type="password" id="Password" required="required" ng-model="user.password"/>
-        <label for="Password">Password</label>
-        <div class="bar"></div>
-      </div>
-      <div class="button-container">
-        <button><span>Go</span></button>
-      </div>
-    </form>
-  </div>
 
+
+<div class="col-md-12 text-center">
+<div class="col-md-4">
+
+</div>
+<form class="col-md-4" ng-submit="login()">
+    <h1>Inicio de session</h1>
+    <div class="form-group">
+        <input type="text" class="form-control input-lg" placeholder="Nombre de Usuario" required="required" ng-model="user.username">
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control input-lg" placeholder="Contraseña" required="required" ng-model="user.password">
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-danger btn-lg btn-block">Entrar</button>
+        <span class="pull-right"><a href="#/register">Registar Usuario</a></span>
+    </div>
+</form>
 </div>

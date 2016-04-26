@@ -1,34 +1,27 @@
-<div class="pen-title">
-</div>
-<div class="container">
-  <div class="card"></div>
-  <div class="card">
-    <h1 class="title">Register</h1>
-     <form ng-submit="new()">
-         <div class="input-container">
-           <input type="text" id="Username" required="required" ng-model="user.username"/>
-           <label for="Username">Username</label>
-           <div class="bar"></div>
-         </div>
-         <div class="input-container">
-           <input type="text" id="Name" required="required" ng-model="user.name"/>
-           <label for="Name">Name</label>
-           <div class="bar"></div>
-         </div>
-         <div class="input-container">
-           <input type="password" id="Password" required="required" ng-model="user.password"/>
-           <label for="Password">Password</label>
-           <div class="bar"></div>
-         </div>
-         <div class="input-container">
-           <input type="password" id="Repeat Password" required="required" ng-model="user.password_confirmation"/>
-           <label for="Repeat Password">Repeat Password</label>
-           <div class="bar"></div>
-         </div>
-         <div class="button-container">
-           <button><span>Go</span></button>
-         </div>
-       </form>
-  </div>
 
+
+
+
+
+<div class="col-md-12 text-center">
+<div class="col-md-4">
+
+</div>
+<form class="col-md-4" ng-submit="new()">
+    <h1>Crear Usuarios Nuevos</h1>
+    <div class="form-group">
+        <input type="text" class="form-control input-lg" placeholder="Nombre de Usuario" required="required" ng-model="user.username">
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control input-lg" placeholder="Contraseña" required="required" ng-model="user.password">
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control input-lg" placeholder="Repetir Contraseña" required="required" ng-model="user.password_confirmation">
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-danger btn-lg btn-block">Registar Usuario</button>
+        <span class="pull-right"><a href="#/login">Iniciar Session</a></span>
+    </div>
+</form>
 </div>
