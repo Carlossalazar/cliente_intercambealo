@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clienteIntercambealoApp')
-.controller('AllProductsCtrl', function ($scope, $http, $route, Product, MisProductos, Intercambio,
+.controller('AllProductsCtrl', function ($location, $scope, $http, $route, Product, MisProductos, Intercambio,
     $localStorage, $rootScope) {
         this.awesomeThings = [
             'HTML5 Boilerplate',
@@ -19,9 +19,10 @@ angular.module('clienteIntercambealoApp')
             console.log(error);
             if (error.status == 401) {
                 $('#todos').hide();
-                
+                $location.path("/");
+
+
             }
-            debugger;
             $('#seleccionado').hide();
         });
 

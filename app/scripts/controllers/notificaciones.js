@@ -19,6 +19,9 @@ angular.module('clienteIntercambealoApp')
     },function(error) {
         $('#pasardatos').hide();
         $('#atras').hide();
+        if (error.status == 401) {
+            $location.path("/");
+        }
 
     });
     $scope.atras = function() {

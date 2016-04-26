@@ -18,6 +18,9 @@ angular.module('clienteIntercambealoApp')
             $('#mostar').hide();
             $('#actualizar').hide();
             console.log(error);
+            if (error.status == 401) {
+                $location.path("/");
+            }
         });
 
         $scope.ocultar = function() {

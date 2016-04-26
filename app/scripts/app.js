@@ -59,7 +59,7 @@ app.factory("RequestHeadersInterceptor", function()
 {
     var request = function request(config)
     {
-        config.headers["Authorization"] ="Token token="+ sessionStorage.getItem("ngStorage-token");
+        config.headers["Authorization"] ="Token token="+ localStorage.getItem("ngStorage-token");
         console.log(config);
         return config;
     };
@@ -73,7 +73,7 @@ app.run(['$rootScope', '$location',
 function($rootScope, $location,$routeProvider,$localStorage) {
     $rootScope.$on('$routeChangeStart', function(event, next) {
         $rootScope.cerrarsession = function(){
-            sessionStorage.clear();
+            localStorage.clear();
             $location.path("/");
 
         };

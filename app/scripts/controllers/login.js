@@ -18,7 +18,7 @@ angular.module('clienteIntercambealoApp')
     $scope.login = function() {
         var session = $scope.user;
         Session.save({username: session.username, password: session.password},function(data) {
-            $sessionStorage.token = data.access_token;
+            $localStorage.token = data.access_token;
             $location.path('/dashboard');
 
         }, function(error) {
